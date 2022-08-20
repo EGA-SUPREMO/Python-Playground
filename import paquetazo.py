@@ -1,0 +1,3 @@
+import Paquetazo.caga
+
+cagar()
