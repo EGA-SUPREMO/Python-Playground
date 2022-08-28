@@ -9,7 +9,7 @@ try:
 except Exception:
     data = files.readJSON()[0]
 
-#yag = yagmail.SMTP(data["email"], data["apppassword"])
+yag = yagmail.SMTP(data["email"], data["apppassword"])
 
 names = open("names.tm" , "r", encoding="utf8");
 emails = open("emails.tm" , "r", encoding="utf8");
@@ -26,7 +26,8 @@ def sendEmail(receiver, esubject, body):
 
     time.sleep(random.randint(120, 300))
 
-x = 0
+x = open('x.txt', 'r').read()
+x = int(x)
 
 def send_spam(j, firstTime):
     for i in range(j, j + 10):
@@ -35,11 +36,12 @@ def send_spam(j, firstTime):
             gretting = "Hello " + names[i] + ",\n\n"
         
         body = gretting + data["data_emails"][firstTime]
-
+        print(i)
         sendEmail(emails[i], "Offer to add subtitles to your videos", body)
 
     print("Ultima vez mandado para el id: "+ str(j+10))
-    print("CAMBIA LA X A: "+ str(x+10))
+    print("CAMBIADA LA X A: "+ str(x+10))
+    files.writeX(x+10)
 
 send_spam(x, 0)
 if x > 9:
