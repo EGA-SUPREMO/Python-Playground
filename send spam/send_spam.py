@@ -30,13 +30,14 @@ x = open('x.txt', 'r').read()
 x = int(x)
 
 def send_spam(j, firstTime):
-    for i in range(j, j + 10):
+    how_many = 10
+    for i in range(j, j + how_many):
         gretting = "Hello,\n\n"
         if names[i] != "":
             gretting = "Hello " + names[i] + ",\n\n"
         
         body = gretting + data["data_emails"][firstTime]
-        print(i)
+        print(str(i)+ " - "+ str(how_many - (i - j)))
         sendEmail(emails[i], "Offer to add subtitles to your videos", body)
 
     if firstTime<1:
@@ -46,6 +47,6 @@ def send_spam(j, firstTime):
 
 send_spam(x, 0)
 if x > 9:
-    send_spam(x-10, 1)
-    if x > 19:
-        send_spam(x-20, 2)
+    send_spam(x, 1)
+if x > 19:
+    send_spam(x-20, 2)
