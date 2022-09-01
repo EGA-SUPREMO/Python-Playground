@@ -39,10 +39,13 @@ def send_spam(j, firstTime):
         print(i)
         sendEmail(emails[i], "Offer to add subtitles to your videos", body)
 
-    print("Ultima vez mandado para el id: "+ str(j+10))
-    print("CAMBIADA LA X A: "+ str(x+10))
-    files.writeX(x+10)
+    if firstTime<1:
+        print("Ultima vez mandado para el id: "+ str(j+10))
+        print("CAMBIADA LA X A: "+ str(x+10))
+        files.writeX(x+10)
 
 send_spam(x, 0)
 if x > 9:
     send_spam(x-10, 1)
+    if x > 19:
+        send_spam(x-20, 2)
